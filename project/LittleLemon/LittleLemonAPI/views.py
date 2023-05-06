@@ -109,7 +109,7 @@ class ManagerLoginView(APIView):
 #Creating a Class that inherits from Base Permission
 
 class CanAddtoDeliveryCrewGroup(BasePermission):
-    def has_permission(self, request, view):
+    def has_permission(self, request):
         user = request.user
         if user.is_authenticated and user.groups.filter(name='Manager').exists():
             return user.has_perm('auth.add_user') and user.has_perm('auth.change_user')
